@@ -1,0 +1,115 @@
+\section{Demo} \label{sec:demo}
+
+\large{The demo is intended to be a copy paste repository, as well as a standards reference. The demo, as well as the \textit{report} class are works in progress, feedback and suggestions are welcome.}
+
+\subsection{General writing}
+\info{Short introductions, quotes, and similar text that one wishes to highlight can be done so with the $\backslash$info command}
+
+\tdo{How to reference: $\backslash$cref, $\backslash$pageref, $\backslash$cite, $\backslash$citep, $\backslash$citet}
+
+
+Label abreviations in use:
+\begin{enumerate}[leftmargin=1.2 cm, label=Label \arabic*:] 
+	%\roman), \Roman), \arabic*:
+\itemsep1pt \parskip0pt \parsep0pt \label{list:labels}
+% \setcounter{enumi}{4}
+	\item eq  (equation)
+	\item fig (figure)
+	\item sec (section)
+	\item tab (table)
+	\item list 
+	\item code
+	\item misc (miscellaneous)
+\end{enumerate} %itemize, enumerate 
+
+\textbf{Normal text looks like this:}\\
+\lipsum[2-3]
+
+
+\subsection{Figures}
+%%% FIGURE
+\begin{figure}[htbp!] %H: Force picture right here
+	\centering
+	\includegraphics[width=0.8\textwidth]{./appendix/xdemo_monkey.png}
+	\caption{\tdr{Add caption}}
+	\label{fig:monkey}
+\end{figure}
+
+\FloatBarrier %Prevents floats (figures, tables, etc) to go past this point
+
+\subsection{Equations}
+Multi line, single label
+\begin{align} \label{eq:simple}
+\begin{split}
+A \rightarrow B \\
+B \rightarrow C \\
+A \rightarrow C
+\end{split}
+\end{align}
+
+Multi line, multi label
+\begin{align} 
+A \rightarrow B \label{eq:line1}\\
+B \rightarrow C \label{eq:line2}\\
+A \rightarrow C \label{eq:line3}
+\end{align}
+
+Pretty normal and square parenthesis can be made with $\backslash$( and $\backslash$[ respectively:
+\begin{align} \label{eq:para}
+\begin{split}
+\rho (x) = \sum_{i=0}^{n} \[{ \({\frac{f(x)}{i} - y}^2}
+\end{split}
+\end{align}
+
+
+\subsection{Inserting code}
+Code can be done in-line with \textit{$\backslash$lstinline[language = XXX]}: \lstinline[language = C++]@for i=1:10 {x_1=x_1+i}@. %%\end{lstlisting}
+The default language is C++. You can use any symbol that isn't in the code snippet to boarder it. \textit{lstinline} fucks up syntax highlighting in TeX-Maker, but it can be fixed with a comment: $\backslash$end\{lstlisting\}. %\end{lstlisting}
+The default can be accessed through $\backslash$c (using \$ as boundaries).
+
+Larger code segemenst can be written in a box of its own:\\
+\begin{minipage}[c]{0.8\textwidth}  %Prevents page break
+\centering
+\begin{lstlisting}[
+	language=C++, 
+	firstnumber=7,
+	frame=single,
+	caption=Code segment in TeX]
+// debug("ptr = %p, ptr->node = %p.", ptr, ptr->node);
+if(stack_ptr->node == NULL) {
+	free(stack_ptr);
+	printf("This is not a string\n");
+	return 0;
+} else{
+	sl_destroy_all(stack_ptr->node);
+}
+\end{lstlisting}
+\label{code:inline}
+\end{minipage}
+
+It is also possible to load code from a file, as \\
+\begin{minipage}[c]{0.8\textwidth}  %Prevents page break
+\lstinputlisting[
+	language=C++, 
+%	firstline  =10,
+%	lastline   =13,
+	firstnumber=10,
+	frame=single,
+	caption=Code segment from file,]
+	{./appendix/xdemo_code.txt} 
+	\label{code:file}
+\end{minipage}
+
+
+\subsection{Conditionals (if, else)}
+\newtoggle{myVariable} %default is false
+\togglefalse{myVariable}
+\toggletrue{myVariable}
+
+Conditionals are easy to use:\\
+\iftoggle{myVariable}{ % === IF ===
+True
+}{ % === ELSE ===
+False
+} % === END IF ===
+

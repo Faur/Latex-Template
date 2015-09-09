@@ -1,0 +1,58 @@
+\documentclass[roman, 10pt, danish, draft]{report}
+	% Suported options: Standard article options (and extarticle)
+	% Suported font types: roman, sans
+	% Suported font sizes: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+	% Suported languages: danish, english
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% REPORT INFORMATION %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\LaTeX \hspace{1.5 mm}Report Template}
+\course{00000 Introduction to \LaTeX}
+\author{Toke Faurby, s136232}
+\date{25th of June 01992}
+%
+%\TOCtitle{:)} %Optional custom table of content title
+\titlepagepicture{./appendix/DTU_logo.tex}
+\universityname{Technical University of Denmark}
+\bibliographystyle{apalike} %chicago, apalike 
+%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% REPORT FORMALIA %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{./fig/}}
+%
+\begin{document}
+\tdr{RED 	- $\backslash$tdr: Important todo, action required.}
+\tdo{ORANGE - $\backslash$tdo: Optional todo, action suggested}
+\tdb{BLUE 	- $\backslash$tdb: Comment, no action}
+\tdg{GREEN 	- $\backslash$tdg: TBD}
+\tdp{PINK 	- $\backslash$tdp: TBD}
+\tdy{YELLOW - $\backslash$tdy: TBD}
+\listoftodos %can be specified with opt. argument: []
+\ifdraft{\newpage}{}
+%
+%%%%%%%%%%%%%%%%%%%%%%
+%%% REPORT CONTENT %%%
+%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle %Comment this out to remove the front page
+\TOC %Table of content
+
+\input{appendix/xdemo_demo.tex}
+
+\bibliography{appendix/bib}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
