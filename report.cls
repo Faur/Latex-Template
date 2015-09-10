@@ -10,6 +10,7 @@
 %%% USER OPTIONS %%%
 %%%%%%%%%%%%%%%%%%%%
 
+\RequirePackage{xkeyval} % allows class options of the type lang=danish
 \RequirePackage{lmodern}
 	%\RequirePackage ~ \usepackage
 	% lmoderm: Latin modern, fonts
@@ -17,7 +18,9 @@
 	%Conditionals, if, else
 	\newtoggle{is_danish}
 	\newtoggle{is_english}
+  \newtoggle{is_DTU}
   \newbool{customauthorheader} % Whether a custom left header is to be used
+  \newbool{coursedefined}
 
 %%% FONT TYPE
 \DeclareOption{sans}{
@@ -33,6 +36,7 @@
 %%% Language
 \DeclareOption{danish}{ \toggletrue{is_danish}}
 \DeclareOption{english}{ \toggletrue{is_english}}
+\DeclareOption{DTU}{ \toggletrue{is_DTU}}
 
 \ProcessOptions\relax
 	% Terminate option processing
@@ -43,7 +47,8 @@
 
 %%% STANDARD WIZARD QUICK START
 \usepackage[utf8]{inputenc}
-\iftoggle{is_danish}{\usepackage[english, danish]{babel}}{} \iftoggle{is_english}{\usepackage[danish, english]{babel}}{} 	
+\iftoggle{is_danish}{\usepackage[english, danish]{babel}}{} 
+\iftoggle{is_english}{\usepackage[danish, english]{babel}}{} 	
 	%Preffered language last
 \usepackage{amssymb}
 \usepackage{mathtools} %>amsmath
@@ -122,9 +127,7 @@
 \newtoggle{custom_TOC}
 
 %%% META
-\newcommand{\course}[1]{\def \course {#1}}
-\newcommand{\titlepagepicture}[1]{\def \titlepagepicture{#1}}
-\newcommand{\universityname}[1]{\def\universityname{#1}}
+\newcommand{\course}[1]{\def \course {#1}\booltrue{coursedefined}}
 \newcommand{\authorheader}[1]{\def\authorheader{#1}\booltrue{customauthorheader}}
 \newcommand{\TOCtitle}[1]{
   \toggletrue{custom_TOC}
@@ -138,7 +141,7 @@
     \iftoggle{is_danish}{ % === IF
       \renewcommand*\contentsname{Indholdsfortegnelse}
     } { % ===ELSE
-      \renewcommand*\contentsname{Table of Content}
+      \renewcommand*\contentsname{Table of Contents}
     } %=== END IF
   }
   \tableofcontents
@@ -196,79 +199,12 @@
 
 
 %%% TITLE PAGE
-\makeatother
-\makeatletter
 \renewcommand{\maketitle}{
-  \begin{titlepage}
-    \begin{center}
-      \vspace*{0.5cm}
-      \input{\titlepagepicture}
-      \vspace{1.5cm}
-      {\LARGE  \universityname} %CHANGEABLE
-      \vspace{3cm}
-      \hrule
-      \vspace{0.6cm}
-      \textsc{\LARGE \@title}
-      \vspace{0.6cm}
-      \hrule
-      \vspace{0.6cm} 
-      \iftoggle{is_danish}{
-        \textsc{Kursus:}
-      }{
-        \textsc{Course:} \\ %CHANGEABLE
-      }
-      \course\\
-      \vspace{0.6cm}
-      \vspace{2cm}
-    \end{center}
-
-    \begin{minipage}[t]{1\textwidth}
-      \begin{flushleft} \large
-        % Check if there is more than one author, and use plural "Authors:" if appropriate
-        \newlength{\authheight}
-        \settoheight{\authheight}{\parbox{\linewidth}{\@author}}
-        \newlength{\linehgt}
-        \settoheight{\linehgt}{\parbox{\linewidth}{()}}
-        \iftoggle{is_danish}{
-          \ifdim \authheight>\linehgt
-          \textsc{Fortattere:}
-          \else
-            \textsc{Forfatter:}
-          \fi
-        }{
-          \ifdim \authheight>\linehgt
-          \textsc{Authors:}
-          \else
-            \textsc{Author:}
-          \fi
-        }
-        \\
-        \vspace{0.15cm}
-        \@author
-      \end{flushleft}
-    \end{minipage}
-    \begin{minipage}[t]{1\textwidth}
-      \begin{flushright} \large
-      \end{flushright}
-    \end{minipage}
-    \vfill
-    \begin{center}
-      \@date
-    \end{center}
-    \thispagestyle{empty}
-    \setcounter{page}{0}
-  \end{titlepage}
+\input{./appendix/frontpage.tex}
 }
-\makeatother
-
-
 
 
 \endinput
 	% NB: This must be the last command in a class document
-
-
-
-
 
 
