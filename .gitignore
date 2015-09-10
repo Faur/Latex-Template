@@ -1,1 +1,13 @@
 build/
+Output/
+*.gz
+*.aux
+*.blg
+*.fdb_latexmk
+*.fls
+*.bbl
+*.log
+*.out
+*.pdf
+*.tdo
+*.toc

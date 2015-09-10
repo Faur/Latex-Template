@@ -17,6 +17,7 @@
 	%Conditionals, if, else
 	\newtoggle{is_danish}
 	\newtoggle{is_english}
+  \newbool{customauthorheader} % Whether a custom left header is to be used
 
 %%% FONT TYPE
 \DeclareOption{sans}{
@@ -124,6 +125,7 @@
 \newcommand{\course}[1]{\def \course {#1}}
 \newcommand{\titlepagepicture}[1]{\def \titlepagepicture{#1}}
 \newcommand{\universityname}[1]{\def\universityname{#1}}
+\newcommand{\authorheader}[1]{\def\authorheader{#1}\booltrue{customauthorheader}}
 \newcommand{\TOCtitle}[1]{
   \toggletrue{custom_TOC}
   \def\TOCtitle{#1}
@@ -149,7 +151,7 @@
 %%% HEADERS & FOOTERS
 \pagestyle{fancy}
 \makeatletter
-\lhead{\@author}
+\lhead{\ifbool{customauthorheader}{\authorheader}{\@author}}
 \chead{\truncate{250pt}{\course}}
 \rhead{\@date}
 \lfoot{}
@@ -222,6 +224,7 @@
 
     \begin{minipage}[t]{1\textwidth}
       \begin{flushleft} \large
+        % Check if there is more than one author, and use plural "Authors:" if appropriate
         \newlength{\authheight}
         \settoheight{\authheight}{\parbox{\linewidth}{\@author}}
         \newlength{\linehgt}
