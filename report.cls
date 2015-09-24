@@ -158,7 +158,7 @@
 \chead{\truncate{250pt}{\course}}
 \rhead{\@date}
 \lfoot{}
-\cfoot{\thepage/\pageref{LastPage}} %CHANGEABLE
+\cfoot{\thepage/\pageref*{LastPage}} %CHANGEABLE
 \rfoot{}
 
 
