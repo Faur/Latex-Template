@@ -34,8 +34,8 @@
   % Set default option
 
 %%% Language
-\DeclareOption{danish}{ \toggletrue{is_danish}}
-\DeclareOption{english}{ \toggletrue{is_english}}
+\DeclareOption{_danish}{ \toggletrue{is_danish}}
+\DeclareOption{_english}{ \toggletrue{is_english}}
 \DeclareOption{DTU}{ \toggletrue{is_DTU}}
 
 \ProcessOptions\relax
