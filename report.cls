@@ -82,6 +82,8 @@
 \usepackage[notref, notcite]{showkeys} %Display label in pdf
 \usepackage{lipsum} % \lipsum: Create some latin text to test layout and formatting
 
+
+\usepackage{cancel} %Enables the use of crossing out math.
 %\usepackage{enumerate}
 %\usepackage{ulem}	
 %\usepackage{microtype}
