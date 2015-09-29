@@ -1,6 +1,7 @@
 % Packages that must be initialized before the draft call
 \RequirePackage[final]{graphicx} %\includegraphics
 %\RequirePackage{listings} %Inputting Code
+\RequirePackage[l2tabu, orthodox]{nag} %warns about use of obsolete commands
 
 \ProvidesClass{report}
 \LoadClassWithOptions{extarticle}
@@ -70,6 +71,7 @@
 \usepackage[section]{placeins} %\FloatBarrier: empty float holding queue + add this to all sections
 
 %%% REGULAR PACKAGES
+\usepackage{microtype} %improves the spacing between words and letters
 \usepackage[colorinlistoftodos, obeyFinal]{todonotes} %todo notes
 \usepackage[final]{listings} %Inputting Code
 \usepackage{siunitx} %\SI
@@ -84,12 +86,10 @@
 
 %\usepackage{enumerate}
 %\usepackage{ulem}	
-%\usepackage{microtype}
 %\usepackage{tikz}
 %\usepackage{calc}
 %\usepackage{ifthen} // Obsolete! Use etoolbox instead
 %\usepackage{physics}
-%\usepackage{siunitx}
 %\usepackage{fixltx2e}
 %\usepackage{leftidx}
 %\usepackage{setspace}
