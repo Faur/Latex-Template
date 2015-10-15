@@ -37,6 +37,7 @@
 %%% Language
 \DeclareOption{_danish}{ \toggletrue{is_danish}}
 \DeclareOption{_english}{ \toggletrue{is_english}}
+\newcommand{\lang}{\iftoggle{is_danish}{danish}{\iftoggle{is_english}{english}{}}} % returns the chosen language
 \DeclareOption{DTU}{ \toggletrue{is_DTU}}
 
 \ProcessOptions\relax
@@ -48,25 +49,24 @@
 
 %%% STANDARD WIZARD QUICK START
 \usepackage[utf8]{inputenc}
-\iftoggle{is_danish}{\usepackage[english, danish]{babel}}{} 
-\iftoggle{is_english}{\usepackage[danish, english]{babel}}{} 	
-	%Preffered language last
+\iftoggle{is_danish}{\usepackage[english, danish]{babel}}{ 
+  \iftoggle{is_english}{\usepackage[danish, english]{babel}}{}
+} %Preferred language last
 \usepackage{amssymb}
 \usepackage{mathtools} %>amsmath
 \usepackage{amssymb} %useful mathematical symbols
 
-
 %%% MINIMUM
 \usepackage[a4paper, top=4cm, bottom=3cm, left=3cm, right=3cm]{geometry} %Page formatting
-	\setlength{\headheight}{14.5pt}
+  \setlength{\headheight}{14.5pt}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor} %> color, load early
 \usepackage[square, comma, sort]{natbib} %\citep{}, \citet{}
 \usepackage{lastpage} %Page counter
 \usepackage{fancyhdr} %Format header and footer
 \usepackage[fit, breakwords]{truncate} 
-\usepackage[hidelinks, final]{hyperref} %Internet links %NB: INCLUDE BEFORE cleveref
+\usepackage[hidelinks, final]{hyperref} %Internet links NB: INCLUDE BEFORE cleveref
   % Removing 'final' might make the draft compile faster
-\usepackage{cleveref} %\pageref
+\usepackage[\lang]{cleveref} 
 \usepackage{float} %H specifier for figures/tables ect
 \usepackage[section]{placeins} %\FloatBarrier: empty float holding queue + add this to all sections
 
@@ -85,14 +85,15 @@
 \usepackage{lipsum} % \lipsum: Create some latin text to test layout and formatting
 
 %\usepackage{enumerate}
-%\usepackage{ulem}	
+%\usepackage{ulem}  
 %\usepackage{tikz}
 %\usepackage{calc}
-%\usepackage{ifthen} // Obsolete! Use etoolbox instead
+%\usepackage{ifthen} % Obsolete! Use etoolbox instead
 %\usepackage{physics}
 %\usepackage{fixltx2e}
 %\usepackage{leftidx}
 %\usepackage{setspace}
+\usepackage{pdfpages} % Allows inserting pages from external pdf
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -100,17 +101,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %%% PRACTICAL
-% Pretty normal and square parenthesesies
-\renewcommand{\(}[1]{\left( #1 \right)} 
-\renewcommand{\[}[1]{\left[ #1 \right]} 
-\renewcommand{\)} %DUMMY, FIXES SYNTAX HIGHLIGHTING
-
+%info
 \newcommand{\info}[1]{ 
 \begin{small} \begin{quote}\begin{em} #1 
 \end{em}\end{quote}\end{small}}
 
+% underline without added vspace
+\newcommand{\ul}[1]{\underline{\smash{#1}}}
+
+% easy links
+\newcommand{\www}[3][blue]{\href{#3}{\color{#1}{\ul{#2}}}}
+
+% easy code
 \renewcommand{\c}[1]{ \lstinline$#1$} %inline code
 
+% user defined commands
+
+%todos
 \definecolor{td_red}{rgb}{1, 0.2, 0.2} % keywords
 \newcommand{\tdr}[1]{\todo[inline, color=td_red]{#1}}
 \newcommand{\tdo}[1]{\todo[inline, color=Dandelion]{#1}}
