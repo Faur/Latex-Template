@@ -5,7 +5,7 @@
 
 \ProvidesClass{report}
 \LoadClassWithOptions{extarticle}
-	%extarticle: http://ftp.snt.utwente.nl/pub/software/tex/macros/latex/contrib/extsizes/extsizes.pdf
+  %extarticle: http://ftp.snt.utwente.nl/pub/software/tex/macros/latex/contrib/extsizes/extsizes.pdf
 
 %%%%%%%%%%%%%%%%%%%%
 %%% USER OPTIONS %%%
@@ -13,22 +13,22 @@
 
 \RequirePackage{xkeyval} % allows class options of the type lang=danish
 \RequirePackage{lmodern}
-	%\RequirePackage ~ \usepackage
-	% lmoderm: Latin modern, fonts
+  %\RequirePackage ~ \usepackage
+  % lmoderm: Latin modern, fonts
 \RequirePackage{etoolbox}
-	%Conditionals, if, else
-	\newtoggle{is_danish}
-	\newtoggle{is_english}
+  %Conditionals, if, else
+  \newtoggle{is_danish}
+  \newtoggle{is_english}
   \newtoggle{is_DTU}
   \newbool{customauthorheader} % Whether a custom left header is to be used
   \newbool{coursedefined}
 
 %%% FONT TYPE
 \DeclareOption{sans}{
-	\renewcommand{\familydefault}{\sfdefault}
+  \renewcommand{\familydefault}{\sfdefault}
 }
 \DeclareOption{roman}{
-	\renewcommand{\familydefault}{\rmdefault}
+  \renewcommand{\familydefault}{\rmdefault}
 }
 
 \ExecuteOptions{roman}
@@ -41,7 +41,7 @@
 \DeclareOption{DTU}{ \toggletrue{is_DTU}}
 
 \ProcessOptions\relax
-	% Terminate option processing
+  % Terminate option processing
 
 %%%%%%%%%%%%%%%%
 %%% PACKAGES %%%
@@ -69,6 +69,7 @@
 \usepackage[\lang]{cleveref} 
 \usepackage{float} %H specifier for figures/tables ect
 \usepackage[section]{placeins} %\FloatBarrier: empty float holding queue + add this to all sections
+\usepackage[margin=0.5cm, labelfont={sc}, font=small]{caption}
 
 %%% REGULAR PACKAGES
 \usepackage{microtype} %improves the spacing between words and letters
@@ -212,6 +213,6 @@
 
 
 \endinput
-	% NB: This must be the last command in a class document
+  % NB: This must be the last command in a class document
 
 
