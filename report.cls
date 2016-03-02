@@ -21,6 +21,7 @@
   \newtoggle{is_english}
   \newtoggle{is_DTU}
   \newbool{customauthorheader} % Whether a custom left header is to be used
+  \newbool{customcourseheader} % Whether a custom middle header is to be used
   \newbool{coursedefined}
 
 %%% FONT TYPE
@@ -95,6 +96,8 @@
 %\usepackage{leftidx}
 %\usepackage{setspace}
 \usepackage{pdfpages} % Allows inserting pages from external pdf
+\usepackage{mathrsfs}
+\usepackage{amsbsy}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -137,6 +140,7 @@
 %%% META
 \newcommand{\course}[1]{\def \course {#1}\booltrue{coursedefined}}
 \newcommand{\authorheader}[1]{\def\authorheader{#1}\booltrue{customauthorheader}}
+\newcommand{\courseheader}[1]{\def\courseheader{#1}\booltrue{customcourseheader}}
 \newcommand{\TOCtitle}[1]{
   \toggletrue{custom_TOC}
   \def\TOCtitle{#1}
@@ -163,7 +167,8 @@
 \pagestyle{fancy}
 \makeatletter
 \lhead{\ifbool{customauthorheader}{\authorheader}{\@author}}
-\chead{\truncate{250pt}{\course}}
+\chead{\ifbool{customcourseheader}{\courseheader}{\truncate{200pt}{\course}}}
+%\chead{\truncate{250pt}{\course}}
 \rhead{\@date}
 \lfoot{}
 \cfoot{\thepage/\pageref*{LastPage}} %CHANGEABLE
