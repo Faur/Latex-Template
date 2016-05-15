@@ -68,6 +68,16 @@
 \usepackage[hidelinks, final]{hyperref} %Internet links NB: INCLUDE BEFORE cleveref
   % Removing 'final' might make the draft compile faster
 \usepackage[\lang]{cleveref} 
+\usepackage[hidelinks, 
+            final,
+            %colorlinks = true,
+            %linkcolor = blue,
+            %urlcolor  = blue,
+            %citecolor = blue,
+            %anchorcolor = blue
+            ]{hyperref} 
+              %Internet links %NB: INCLUDE BEFORE cleveref
+              % Removing 'final' might make the draft compile faster
 \usepackage{float} %H specifier for figures/tables ect
 \usepackage[section]{placeins} %\FloatBarrier: empty float holding queue + add this to all sections
 \usepackage[margin=0.5cm, labelfont={sc}, font=small]{caption}
