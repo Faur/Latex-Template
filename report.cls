@@ -70,11 +70,12 @@
 \usepackage[\lang]{cleveref} 
 \usepackage[hidelinks, 
             final,
-            %colorlinks = true,
-            %linkcolor = blue,
-            %urlcolor  = blue,
-            %citecolor = blue,
-            %anchorcolor = blue
+            colorlinks = true,
+            allcolors = {black},
+            urlcolor  = {blue},
+            %linkcolor = {blue},
+            %citecolor = {blue},
+            %anchorcolor = {blue}
             ]{hyperref} 
               %Internet links %NB: INCLUDE BEFORE cleveref
               % Removing 'final' might make the draft compile faster
