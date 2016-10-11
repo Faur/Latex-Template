@@ -64,10 +64,8 @@
 \usepackage[square, comma, sort]{natbib} %\citep{}, \citet{}
 \usepackage{lastpage} %Page counter
 \usepackage{fancyhdr} %Format header and footer
-\usepackage[fit, breakwords]{truncate} 
-\usepackage[hidelinks, final]{hyperref} %Internet links NB: INCLUDE BEFORE cleveref
-  % Removing 'final' might make the draft compile faster
-\usepackage[\lang]{cleveref} 
+\usepackage[fit, breakwords]{truncate}
+\usepackage{float} %H specifier for figures/tables ect
 \usepackage[hidelinks, 
             final,
             colorlinks = true,
@@ -79,7 +77,7 @@
             ]{hyperref} 
               %Internet links %NB: INCLUDE BEFORE cleveref
               % Removing 'final' might make the draft compile faster
-\usepackage{float} %H specifier for figures/tables ect
+\usepackage[\lang]{cleveref} 
 \usepackage[section]{placeins} %\FloatBarrier: empty float holding queue + add this to all sections
 \usepackage[margin=0.5cm, labelfont={sc}, font=small]{caption}
 
