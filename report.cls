@@ -95,6 +95,8 @@
 \usepackage[notref, notcite]{showkeys} %Display label in pdf
 \usepackage{lipsum} % \lipsum: Create some latin text to test layout and formatting
 
+
+\usepackage{cancel} %Enables the use of crossing out math.
 %\usepackage{enumerate}
 %\usepackage{ulem}  
 %\usepackage{tikz}
@@ -138,6 +140,8 @@
 \newcommand{\tdg}[1]{\todo[inline, color=LimeGreen]{#1}}
 \newcommand{\tdp}[1]{\todo[inline, color=CarnationPink]{#1}}
 \newcommand{\tdy}[1]{\todo[inline, color=Yellow]{#1}}
+
+\newcommand*{\romann}[1]{\expandafter\@slowromancap\romannumeral #1@} %ads a command to write roman numericals
 
 %%%%%%%%%%%%%%%%%%%%
 %%% LAYOUT SETUP %%%
@@ -187,7 +191,38 @@
 %%% PROGRAMMING LANGUAGES
 \definecolor{lightlightgray}{gray}{0.95} % background
 \definecolor{comment}{rgb}{0.35, 0.6, 0.35}
-\definecolor{shpurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{shpurple}{rgb}{0.5,0,0.35}% keywords
+\definecolor{matlabgreen}{rgb}{28,172,0} %colors for matlab
+\definecolor{matlablilas}{rgb}{170,55,241}
+
+\lstset{language=MATLAB,% Matlab language
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},
+    morekeywords=[2]{1}, 
+    keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{matlablilas},
+    commentstyle=\color{matlabgreen},%
+    showstringspaces=false,
+    numbers=left,%
+    numberstyle={\tiny \color{black}},
+    numbersep=9pt, 
+    emph=[1]{for,end,break},emphstyle=[1]\color{red},
+    frame=single,                   % adds a frame around the code
+    frame=ltrb,
+    rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+    tabsize=2,                      % sets default tabsize to 2 spaces
+    captionpos=b,                   % sets the caption-position to bottom
+    breaklines=true,                % sets automatic line breaking
+    breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+    title=\lstname,                 % show the filename of files included with \lstinputlisting;
+    xleftmargin=25pt,
+    xrightmargin=25pt,
+    aboveskip=10pt,
+    belowskip=10pt
+}
 
 \lstset{ language=C++,
   backgroundcolor=\color{lightlightgray},
